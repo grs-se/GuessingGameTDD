@@ -1,6 +1,7 @@
 package com.javafoundations.game;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
@@ -30,14 +31,14 @@ public class GuessingGameTest {
     @Test
     public void testOneWrongNegGuessSituation() {
         String message = game.guess(-5);
-        assertEquals("You didn't get it", message);
+        assertEquals("You didn't get it - you're too low", message);
     }
 
     @Test
     public void testOneWrongPosGuessSituation() {
         int randomNum = game.getRandomNumber();
         String message = game.guess(randomNum + 1);
-        assertEquals("You didn't get it", message);
+        assertEquals("You didn't get it - you're too high", message);
     }
 
     @Test
@@ -93,7 +94,10 @@ public class GuessingGameTest {
         game.guess(-3);
         int correctAnswer = game.getRandomNumber();
         String message = game.guess(correctAnswer);
-        assertEquals("You got it in 3 tries", message);
+        // message to help you pinpoint which of the assertions is failing
+        assertTrue(message.contains(" 3 "), "Should indicate 3 tries");
+        assertTrue(message.contains("You got it"), "Should indicate that we got the right number of tries");
+//        assertEquals("You got it in 3 tries", message);
     }
 
     @Test
@@ -112,6 +116,11 @@ public class GuessingGameTest {
         assertEquals("Sorry you are limited to only 4 tries. Your game is over.", message);
     }
 
+    @Test
+    // this will pass but it is not a test without an assertion
+    public void junkTest() {
+    }
+
     // NOTES:
 
     // One of the interesting things about TDD is that it is an odd way to code in some respects because
@@ -127,4 +136,7 @@ public class GuessingGameTest {
 
     // "Fragile Tests"
     // boy who cried wolf - if a test keeps failing there may be a tendency to disable it but not a good idea: best to address why it is the test is failing
+
+    // limits changes to 1 at a time, make all tests work and then change again. Don't make multiple changes at once!
+
 }
