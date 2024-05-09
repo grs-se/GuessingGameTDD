@@ -3,6 +3,7 @@ package com.javafoundations.game;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 public class GuessingGameTest {
@@ -39,6 +40,7 @@ public class GuessingGameTest {
     }
 
     @Test
+//    @RepeatedTest(10)
     public void testRandomNumberGeneration() {
         // if program runs 100 times you would expect all numbers to come up at least once
         // tells us how far off is the random number generation technique
@@ -49,7 +51,10 @@ public class GuessingGameTest {
         // 1 2 3 4 5 6 7 8 9 10
         // 1 1 1 1 0 1 0 1 1 1 = 10
         int[] rndNumCount = new int[11];
-        for (int counter=0; counter < 100; counter++) {
+        for (int counter=0; counter < 60; counter++) {
+            // ambiguity, same variable name as field, by default Java will use the most local variable
+            // want new instance of class to get new random num each loop
+            GuessingGame game = new GuessingGame();
             int randomNum = game.getRandomNumber();
             rndNumCount[randomNum] = 1;
         }
@@ -60,4 +65,6 @@ public class GuessingGameTest {
         }
         assertEquals(10, sum);
     }
+    // don't write unit tests for other people's code, just our code
+    // so don't want to test Java's ability to generate a random num but instead our ability to use that random num
 }
