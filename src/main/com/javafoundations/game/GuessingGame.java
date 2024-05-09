@@ -1,3 +1,4 @@
+// fully qualified class name
 package com.javafoundations.game;
 
 import java.util.Random;
@@ -35,9 +36,28 @@ public class GuessingGame {
     public int getRandomNumber() {
         return randomNumber;
     }
+
+    // Game logic seperate from the UI logic
+    // UI logic could have been put in another class
+    // java -cp .\out\production\GuessingGameTDD com.javafoundations.game.GuessingGame
+    public static void main(String[] args) {
+        GuessingGame game = new GuessingGame();
+        boolean loopShouldContinue = true;
+        do {
+            String input = System.console().readLine("Enter a number: ");
+            if ("q".equals(input)) {
+                return;
+            }
+            String output = game.guess(Integer.parseInt(input));
+            System.out.println(output);
+            if (output.contains("You got it") || output.contains("over")) {
+                loopShouldContinue = false;
+            }
+        } while (loopShouldContinue);
+    }
 }
 
-// NOTES
+// NOTES ON TDD
 // best practices suggest avoiding multiple return statements in a method
 // ok to do the most minimal thing to pass the test
 // similar functionality as previous implementation but much simpler code overall and nothing here is extraneous whatsoever.
