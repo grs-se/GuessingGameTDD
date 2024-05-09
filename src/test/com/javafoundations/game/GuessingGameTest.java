@@ -66,8 +66,7 @@ public class GuessingGameTest {
         }
         assertEquals(10, sum);
     }
-    // don't write unit tests for other people's code, just our code
-    // so don't want to test Java's ability to generate a random num but instead our ability to use that random num
+
 
     @Test
     public void testFourWrongGuesses() {
@@ -88,11 +87,6 @@ public class GuessingGameTest {
         assertEquals("You got it in 4 tries", message);
     }
 
-    // One of the interesting things about TDD is that it is an odd way to code in some respects because
-    // if you are doing it strictly where you' just trying to implement what you think might be the simplest thing you can do in the code to get the test to pass
-    // then sometimes that results in you writing code that you yourself might not have intentionally wanted to write yet it does actually make the tests pass
-    //
-
     @Test
     public void testTwoWrongGuessesAndOneCorrect() {
         game.guess(-3);
@@ -101,6 +95,31 @@ public class GuessingGameTest {
         String message = game.guess(correctAnswer);
         assertEquals("You got it in 3 tries", message);
     }
+
+    @Test
+    public void testTenWrongGuesses() {
+        game.guess(-3);
+        game.guess(-3);
+        game.guess(-3);
+        game.guess(-3);
+        game.guess(-3);
+        game.guess(-3);
+        game.guess(-3);
+        game.guess(-3);
+        game.guess(-3);
+        game.guess(-3);;
+        String message = game.guess(-3);
+        assertEquals("Sorry you are limited to only 4 tries. Your game is over.", message);
+    }
+
+    // NOTES:
+
+    // One of the interesting things about TDD is that it is an odd way to code in some respects because
+    // if you are doing it strictly where you' just trying to implement what you think might be the simplest thing you can do in the code to get the test to pass
+    // then sometimes that results in you writing code that you yourself might not have intentionally wanted to write yet it does actually make the tests pass
+
+    // don't write unit tests for other people's code, just our code
+    // so don't want to test Java's ability to generate a random num but instead our ability to use that random num
 
     // "Self-Documenting" code:
     // comments have a tendency to eventually over time fall out of sync with the code that they are commenting
