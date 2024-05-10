@@ -67,8 +67,7 @@ public class GuessingGameTest {
         }
         assertEquals(10, sum);
     }
-
-
+    
     @Test
     public void testFourWrongGuesses() {
         game.guess(-3);
@@ -139,4 +138,21 @@ public class GuessingGameTest {
 
     // limits changes to 1 at a time, make all tests work and then change again. Don't make multiple changes at once!
 
+
+    // DEBUGGING
+    // put breakpoint on line close to where we think things are going awry
+    // stepping in to a method (like the thread will step into it)
+    // going along for the ride with the thread
+    // Call stack - thread goes from method to method, each method's parameters get placed on something called a stack
+    // halted each step
+    // don't want to step into everything - can get into trouble, need to know when to step in and step over
+    // the line doesn't execute until after you step in or over it
+    // convenient to be able to see in real time what the program is actually doing, what values are set where.
+    // stepping into the string.format method is not useful to us. Code written by Java or third party problems you should assume works fine. a waste of our time
+    // can't just change something during a debugging session. Java is compiled, if we make changes to code, code has to be recompiled, and reloaded into the memory, into the debugging session itself.
+    // debugging session after changes will be in unknown state
+    // might not want to have to start again. Want to make a surgical change and then pick up where you left off
+    // drop or reset a frame, restart from this frame (which mught be 10 frames deep), rather from entire program.
+    // dropping a frame does not reset the values of fields in a class, all it does at best is reset the local vairables in a method
+    // do not need to recompile after changing the value of a variable in debugging mode, as this is not the code, it is metadata but may need to drop the frame.
 }
