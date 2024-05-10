@@ -155,4 +155,22 @@ public class GuessingGameTest {
     // drop or reset a frame, restart from this frame (which mught be 10 frames deep), rather from entire program.
     // dropping a frame does not reset the values of fields in a class, all it does at best is reset the local vairables in a method
     // do not need to recompile after changing the value of a variable in debugging mode, as this is not the code, it is metadata but may need to drop the frame.
+
+    // Debugger Options:
+    // can suspend threads and multiple threads
+    // only stop at a breakpoint if a certain condition is met
+    // for instance inside a loop with 1000 elements, can say only stop here when randomNum = 11
+    // if random num == 11 suspend the debugger
+    // and now I can jump in here or do whatever I want to do here
+    // might come in handy with @RepeatTest annotation
+
+    // Novice developers in debug mode have a tendency to step into third-party library code: you don't want to step into third-party library code
+    // Fruitless endeavor, so step over that line
+    // Some developers have a tendency to overuse the debugger - it can be a great tool to actually verify what is happening line by line, however that process takes times
+    // instead I like to use TDD, the only bugs that should exist in tdd are bugs that were'nt discovered because you didn't think of those test scenarios, so if you find a bug you first want to write a test that reproduces that bug, and you should see that test should indeed fail
+    // do that first then go and fix the bug, and to fix the bug you may need to use the debugger to analyse what is going in, and then once you've fixed it the test shou;d then pass, and then that test along with all the other tests serve as a safety net to ensure that hopefully that particular bug never comes back
+    // and if it does come back you have an early warning system becasue that particular case will now fail.
+    // In most professional programming environments there are servers set up to build and compile code that is written by the team automatically, team members will write code and then check that code into a central code reposiroty, after that code is built any tests that exist for that coed should ideally run automatically by this build server
+    // and if those tests fail a ntoification wil be sent out to the entire team letting them know right away letting them know one of their tests has failed, and ideally that coed can't proceed any further down the pipeline to production use by customers until all the tests are passing.
+    // a lot more value to writing these tests than just helping you as an individual developer to write clean code-  these tests serve as an early warning system if the code has been inadvertently broken,
 }

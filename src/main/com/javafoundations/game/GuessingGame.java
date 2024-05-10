@@ -4,7 +4,7 @@ package com.javafoundations.game;
 import java.util.Random;
 
 public class GuessingGame {
-    private final int randomNumber = new Random().nextInt(10) + 1;
+    private final int randomNumber = new Random().nextInt(10) + 2;
     private int counter = 0;
 
     public String guess(int guessedNumber) {
@@ -36,7 +36,7 @@ public class GuessingGame {
         return randomNumber;
     }
 
-    // Game logic seperate from the UI logic
+    // Game logic separate from the UI logic
     // UI logic could have been put in another class
     // java -cp .\out\production\GuessingGameTDD com.javafoundations.game.GuessingGame
     public static void main(String[] args) {
